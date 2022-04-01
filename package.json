@@ -4,9 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "node src/server.js",
+    "dev": "nodemon src/server.js",
     "orm": "./node_modules/.bin/sequelize-cli ",
-    "createdb":"./node_modules/.bin/sequelize-cli db"
+    "createdb": "./node_modules/.bin/sequelize-cli db"
   },
   "repository": {
     "type": "git",
@@ -22,6 +22,7 @@
     "dotenv": "^16.0.0",
     "express": "^4.17.3",
     "mysql2": "^2.3.3",
+    "nodemon": "^2.0.15",
     "sequelize": "^6.17.0",
     "sequelize-cli": "^6.4.1"
   },
