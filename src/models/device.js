@@ -17,10 +17,16 @@ const Device = database.define('device', {
     }
   },
   color: {
-    type: Sequelize.STRING(16)
+    type: Sequelize.STRING(16),
+    validate: {
+      is: ['^[a-z]+$', 'i'] // somente letras
+    }
   },
   partNumber: {
-    type: Sequelize.INTEGER
+    type: Sequelize.INTEGER,
+    validate: {
+      min: 0
+    }
   }
 })
 module.exports = Device
