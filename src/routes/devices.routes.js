@@ -1,10 +1,15 @@
 
 const { Router } = require('express')
-
+const deviceModel = require('../models/device')
 const deviceRoutes = Router()
 
-deviceRoutes.get('/', (request, response) => {
-  response.json({ msg: 'Device Route' })
+deviceRoutes.get('/', async (request, response) => {
+  const allDevices = await deviceModel.findAll()
+  const allDevicesObj = []
+  allDevices.forEach(device => {
+    allDevicesObj.push(device.dataValues)
+  })
+  response.json(allDevicesObj)
 })
 
 module.exports = { deviceRoutes }
