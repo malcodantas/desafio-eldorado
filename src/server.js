@@ -1,6 +1,16 @@
 const express = require('express')
 const { routes } = require('./routes')
 
+const sequelize = require('./database')
+sequelize
+  .authenticate()
+  .then(() => {
+    console.log('Connection has been established successfully.')
+  })
+  .catch(err => {
+    console.error('Unable to connect to the database:', err)
+  })
+
 const app = express()
 const PORT = 3000
 
