@@ -28,5 +28,7 @@ const Device = database.define('device', {
       min: 0
     }
   }
+}, {
+  timestamps: false
 })
 module.exports = Device
