@@ -21,8 +21,8 @@ deviceRoutes.get('/:id', async (request, response) => {
 
 deviceRoutes.post('/', async (request, response) => {
   const deviceRepository = new DeviceRepository()
-  const { category, color, partNumber } = request.body
-  const createdDevice = await deviceRepository.create({ category, color, partNumber })
+  const { categoryId, color, partNumber } = request.body
+  const createdDevice = await deviceRepository.create({ categoryId, color, partNumber })
   response.json(createdDevice)
 })
 

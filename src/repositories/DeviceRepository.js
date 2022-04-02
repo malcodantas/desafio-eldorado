@@ -1,6 +1,5 @@
-const { request } = require('express')
 const deviceModel = require('../models/device')
-
+const Category = require('../models/category')
 class DeviceRepository {
   constructor () {
     this.model = deviceModel
@@ -16,13 +15,13 @@ class DeviceRepository {
   }
 
   async getById (id) {
-    const device = await this.model.findOne({ where: { id: id } })
+    const device = await this.model.findByPk(id, { include: Category })
     return device
   }
 
   async create (device) {
-    const { category, color, partNumber } = device
-    const newDevice = await this.model.create({ category: category, color: color, partNumber: partNumber })
+    const { categoryId, color, partNumber } = device
+    const newDevice = await this.model.create({ categoryId: categoryId, color: color, partNumber: partNumber })
     return newDevice
   }
 
