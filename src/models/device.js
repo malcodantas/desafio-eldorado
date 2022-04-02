@@ -1,4 +1,4 @@
-const Sequelize = require('sequelize')
+const { Sequelize } = require('sequelize')
 const database = require('../database')
 const Category = require('./category')
 
@@ -9,13 +9,13 @@ const Device = database.define('device', {
     autoIncrement: true,
     primaryKey: true
   },
-  category: {
-    type: Sequelize.INTEGER,
-    references: {
-      model: Category,
-      key: 'id'
-    }
-  },
+  // category: {
+  //   type: Sequelize.INTEGER,
+  //   references: {
+  //     model: Category,
+  //     key: 'id'
+  //   }
+  // },
   color: {
     type: Sequelize.STRING(16),
     validate: {
@@ -30,5 +30,9 @@ const Device = database.define('device', {
   }
 }, {
   timestamps: false
+})
+Device.belongsTo(Category, {
+  constraint: true
+  // foreignKey: 'categoryId'
 })
 module.exports = Device

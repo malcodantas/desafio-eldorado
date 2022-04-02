@@ -9,7 +9,7 @@ module.exports = {
         autoIncrement: true,
         primaryKey: true
       },
-      category: {
+      categoryId: {
         type: Sequelize.INTEGER,
         references: {
           model: 'categories',

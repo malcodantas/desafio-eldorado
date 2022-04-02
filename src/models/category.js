@@ -1,6 +1,5 @@
 const Sequelize = require('sequelize')
 const database = require('../database')
-
 const Category = database.define('category', {
   id: {
     type: Sequelize.INTEGER,
