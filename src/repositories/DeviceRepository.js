@@ -6,7 +6,7 @@ class DeviceRepository {
   }
 
   async getAll () {
-    const allDevices = await this.model.findAll()
+    const allDevices = await this.model.findAll({ include: Category })
     const allDevicesObj = []
     allDevices.forEach(device => {
       allDevicesObj.push(device.dataValues)
