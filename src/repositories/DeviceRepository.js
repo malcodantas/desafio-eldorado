@@ -1,11 +1,11 @@
-const deviceModel = require('../models/device')
+const DeviceModel = require('../models/device')
 const Category = require('../models/category')
 class DeviceRepository {
   constructor () {
-    this.model = deviceModel
+    this.model = DeviceModel
   }
 
-  async getAllDevices () {
+  async getAll () {
     const allDevices = await this.model.findAll()
     const allDevicesObj = []
     allDevices.forEach(device => {
@@ -30,6 +30,12 @@ class DeviceRepository {
       where: { id: id }
     })
     return { deletedDevice, id }
+  }
+
+  async update (device) {
+    const deviceToUpdate = await this.getById(device.id)
+    const updatedDevice = deviceToUpdate.update({ ...device })
+    return updatedDevice
   }
 }
 

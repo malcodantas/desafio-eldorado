@@ -8,7 +8,7 @@ const deviceRoutes = Router()
 
 deviceRoutes.get('/', async (request, response) => {
   const deviceRepository = new DeviceRepository()
-  const allDevicesObj = await deviceRepository.getAllDevices()
+  const allDevicesObj = await deviceRepository.getAll()
   response.json(allDevicesObj)
 })
 
@@ -24,6 +24,16 @@ deviceRoutes.post('/', async (request, response) => {
   const { categoryId, color, partNumber } = request.body
   const createdDevice = await deviceRepository.create({ categoryId, color, partNumber })
   response.json(createdDevice)
+})
+
+deviceRoutes.put('/:id', async (request, response) => {
+  const deviceRepository = new DeviceRepository()
+  const device = {
+    ...request.body,
+    id: request.params.id
+  }
+  const updatedDevice = await deviceRepository.update(device)
+  response.json(updatedDevice)
 })
 
 deviceRoutes.delete('/:id', async (request, response) => {
