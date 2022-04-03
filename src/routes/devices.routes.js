@@ -26,6 +26,16 @@ deviceRoutes.post('/', async (request, response) => {
   response.json(createdDevice)
 })
 
+deviceRoutes.put('/:id', async (request, response) => {
+  const deviceRepository = new DeviceRepository()
+  const device = {
+    ...request.body,
+    id: request.params.id
+  }
+  const updatedDevice = await deviceRepository.update(device)
+  response.json(updatedDevice)
+})
+
 deviceRoutes.delete('/:id', async (request, response) => {
   const deviceRepository = new DeviceRepository()
   const id = request.params.id
