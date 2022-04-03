@@ -8,7 +8,7 @@ const deviceRoutes = Router()
 
 deviceRoutes.get('/', async (request, response) => {
   const deviceRepository = new DeviceRepository()
-  const allDevicesObj = await deviceRepository.getAllDevices()
+  const allDevicesObj = await deviceRepository.getAll()
   response.json(allDevicesObj)
 })
 

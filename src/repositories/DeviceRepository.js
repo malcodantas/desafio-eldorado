@@ -5,7 +5,7 @@ class DeviceRepository {
     this.model = DeviceModel
   }
 
-  async getAllDevices () {
+  async getAll () {
     const allDevices = await this.model.findAll()
     const allDevicesObj = []
     allDevices.forEach(device => {
