@@ -1,4 +1,3 @@
-const DeviceModel = require('../models/device')
 const Category = require('../models/category')
 class DeviceRepository {
   constructor () {
