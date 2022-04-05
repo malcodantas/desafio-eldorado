@@ -1,6 +1,6 @@
 <p align="center">
   <a href="" rel="noopener">
- <img width=200px height=200px src="https://i.imgur.com/6wj0hh6.jpg" alt="Project logo"></a>
+ <img width=200px height=200px src="https://scontent.fnat1-1.fna.fbcdn.net/v/t39.30808-6/273160434_4754489137919908_9153673695573801515_n.jpg?_nc_cat=101&ccb=1-5&_nc_sid=09cbfe&_nc_ohc=OZI28MbDya0AX-8hdlv&_nc_ht=scontent.fnat1-1.fna&oh=00_AT-IH0E6nDOnpcedw8TboCtH-Ar9NgeSp7r2-NBCT1-7ow&oe=62509A4F" alt="Desafio eldorado"></a>
 </p>
 
 <h3 align="center">desafio-eldorado</h3>
