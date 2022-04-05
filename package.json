@@ -5,8 +5,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "nodemon src/server.js",
-    "orm": "./node_modules/.bin/sequelize-cli ",
-    "createdb": "./node_modules/.bin/sequelize-cli db"
+    "orm": "./node_modules/.bin/sequelize-cli "
   },
   "repository": {
     "type": "git",

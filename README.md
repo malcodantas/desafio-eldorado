@@ -42,8 +42,8 @@ npm install
 ```
 ### Criação do banco de dados e rodando migrations
 ```
-npm run createdb
-npm run orm migrations:run
+npm run orm db:create
+npm run orm db:migrate
 ```
 
 ### Rodando API
