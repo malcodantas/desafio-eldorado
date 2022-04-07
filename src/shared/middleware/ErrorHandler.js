@@ -1,3 +1,4 @@
+const ServerError = require('../errors/ServerError')
 const ErrorHandler = (error, request, response, next) => {
   if (error && error.statusCode) {
     response.status(error.statusCode).json({
@@ -5,7 +6,10 @@ const ErrorHandler = (error, request, response, next) => {
       message: error.message
     })
   } else {
-    console.log(error)
+    response.status(500).json({
+      statusCode: 500,
+      message: 'Internal Server Error'
+    })
   }
   next()
 }
