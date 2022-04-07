@@ -1,8 +1,9 @@
 const CategoryRepository = require('../repositories/CategoryRepository')
-
+const VerifyMandatoryParams = require('../shared/utils/VerifyMandatoryParams')
 class CategoryController {
   async create (request, response) {
     const categoryRepository = new CategoryRepository()
+    VerifyMandatoryParams(['name'], request.body)
     const { name } = request.body
     const createdCategory = await categoryRepository.create({ name })
     return response.json(createdCategory)

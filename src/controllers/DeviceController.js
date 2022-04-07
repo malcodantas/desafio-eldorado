@@ -1,13 +1,11 @@
 const DeviceRepository = require('../repositories/DeviceRepository')
-const MissingParamError = require('../shared/errors/MissingParamError')
+const VerifyMandatoryParams = require('../shared/utils/VerifyMandatoryParams')
+
 class DeviceController {
   async create (request, response) {
     const requiredFields = ['categoryId', 'color', 'partNumber']
-    for (const field of requiredFields) {
-      if (!request.body[field]) {
-        throw new MissingParamError(field)
-      }
-    }
+    VerifyMandatoryParams(requiredFields, request.body)
+
     const { categoryId, color, partNumber } = request.body
     const deviceRepository = new DeviceRepository()
     const createdDevice = await deviceRepository.create({ categoryId, color, partNumber })
@@ -17,7 +15,7 @@ class DeviceController {
   async list (request, response) {
     const deviceRepository = new DeviceRepository()
     const allDevicesObj = await deviceRepository.getAll()
-    return response.json(allDevicesObj)
+    return response.json({ statusCode: 200, data: allDevicesObj })
   }
 
   async delete (request, response) {
