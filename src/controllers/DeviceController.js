@@ -1,5 +1,5 @@
 const DeviceRepository = require('../repositories/DeviceRepository')
-const MissingParamError = require('../errors/MissingParamError')
+const MissingParamError = require('../shared/errors/MissingParamError')
 class DeviceController {
   async create (request, response) {
     const requiredFields = ['categoryId', 'color', 'partNumber']
