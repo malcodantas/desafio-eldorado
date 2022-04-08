@@ -6,20 +6,20 @@ class CategoryController {
     VerifyMandatoryParams(['name'], request.body)
     const { name } = request.body
     const createdCategory = await categoryRepository.create({ name })
-    return response.json(createdCategory)
+    return response.status(201).json({ statusCode: 201, data: createdCategory })
   }
 
   async list (request, response) {
     const categoryRepository = new CategoryRepository()
     const allCategoriesObj = await categoryRepository.getAll()
-    return response.json(allCategoriesObj)
+    return response.status(200).json({ statusCode: 200, data: allCategoriesObj })
   }
 
   async delete (request, response) {
     const categoryRepository = new CategoryRepository()
     const id = request.params.id
     await categoryRepository.delete(id)
-    return response.sendStatus(204)
+    return response.status(200).json({ statusCode: 200 })
   }
 
   async update (request, response) {
@@ -29,14 +29,14 @@ class CategoryController {
       id: request.params.id
     }
     const updatedCategory = await categoryRepository.update(category)
-    return response.json(updatedCategory)
+    return response.status(200).json({ statusCode: 200, data: updatedCategory })
   }
 
   async findOne (request, response) {
     const categoryRepository = new CategoryRepository()
     const id = request.params.id
     const categoryObj = await categoryRepository.getById(id)
-    return response.json(categoryObj)
+    return response.status(200).json({ statusCode: 200, data: categoryObj })
   }
 }
 

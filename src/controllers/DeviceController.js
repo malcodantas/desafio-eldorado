@@ -9,20 +9,20 @@ class DeviceController {
     const { categoryId, color, partNumber } = request.body
     const deviceRepository = new DeviceRepository()
     const createdDevice = await deviceRepository.create({ categoryId, color, partNumber })
-    return response.json(createdDevice)
+    return response.status(201).json({ statusCode: 201, data: createdDevice })
   }
 
   async list (request, response) {
     const deviceRepository = new DeviceRepository()
     const allDevicesObj = await deviceRepository.getAll()
-    return response.json({ statusCode: 200, data: allDevicesObj })
+    return response.status(200).json({ statusCode: 200, data: allDevicesObj })
   }
 
   async delete (request, response) {
     const deviceRepository = new DeviceRepository()
     const id = request.params.id
     await deviceRepository.delete(id)
-    return response.sendStatus(204)
+    return response.status(200).json({ statusCode: 200 })
   }
 
   async update (request, response) {
@@ -32,14 +32,14 @@ class DeviceController {
       id: request.params.id
     }
     const updatedDevice = await deviceRepository.update(device)
-    return response.json(updatedDevice)
+    return response.status(200).json({ statusCode: 201, data: updatedDevice })
   }
 
   async findOne (request, response) {
     const deviceRepository = new DeviceRepository()
     const id = request.params.id
     const deviceObj = await deviceRepository.getById(id)
-    return response.json(deviceObj)
+    return response.status(200).json({ statusCode: 200, data: deviceObj })
   }
 }
 
