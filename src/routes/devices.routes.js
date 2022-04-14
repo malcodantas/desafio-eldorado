@@ -1,8 +1,14 @@
 
 const { Router } = require('express')
-const { DeviceController } = require('../controllers/DeviceController')
 const resolver = require('../shared/utils/Resolver')
-const deviceController = new DeviceController()
+
+const { DeviceController } = require('../controllers/DeviceController')
+const DeviceRepository = require('../repositories/DeviceRepository')
+const Device = require('../models/device')
+
+const deviceRepository = new DeviceRepository(Device)
+const deviceController = new DeviceController(deviceRepository)
+
 const deviceRoutes = Router()
 
 deviceRoutes.get('/', resolver(deviceController.list))

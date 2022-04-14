@@ -1,45 +1,42 @@
-const DeviceRepository = require('../repositories/DeviceRepository')
 const VerifyMandatoryParams = require('../shared/utils/VerifyMandatoryParams')
-const DeviceModel = require('../models/device')
 
 class DeviceController {
-  async create (request, response) {
+  constructor (repository) {
+    this.repository = repository
+  }
+
+  create = async (request, response)=> {
     const requiredFields = ['categoryId', 'color', 'partNumber']
     VerifyMandatoryParams(requiredFields, request.body)
 
     const { categoryId, color, partNumber } = request.body
-    const deviceRepository = new DeviceRepository(DeviceModel)
-    const createdDevice = await deviceRepository.create({ categoryId, color, partNumber })
+    const createdDevice = await this.repository.create({ categoryId, color, partNumber })
     return response.status(201).json({ statusCode: 201, data: createdDevice })
   }
 
-  async list (request, response) {
-    const deviceRepository = new DeviceRepository(DeviceModel)
-    const allDevicesObj = await deviceRepository.getAll()
+  list = async(request, response) =>{
+    const allDevicesObj = await this.repository.getAll()
     return response.status(200).json({ statusCode: 200, data: allDevicesObj })
   }
 
-  async delete (request, response) {
-    const deviceRepository = new DeviceRepository(DeviceModel)
+  delete = async(request, response)=> {
     const id = request.params.id
-    await deviceRepository.delete(id)
+    await this.repository.delete(id)
     return response.status(200).json({ statusCode: 200 })
   }
 
-  async update (request, response) {
-    const deviceRepository = new DeviceRepository(DeviceModel)
+  update = async(request, response) => {
     const device = {
       ...request.body,
       id: request.params.id
     }
-    const updatedDevice = await deviceRepository.update(device)
+    const updatedDevice = await this.repository.update(device)
     return response.status(200).json({ statusCode: 201, data: updatedDevice })
   }
 
-  async findOne (request, response) {
-    const deviceRepository = new DeviceRepository(DeviceModel)
+  findOne = async (request, response) => {
     const id = request.params.id
-    const deviceObj = await deviceRepository.getById(id)
+    const deviceObj = await this.repository.getById(id)
     return response.status(200).json({ statusCode: 200, data: deviceObj })
   }
 }

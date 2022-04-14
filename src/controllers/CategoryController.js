@@ -2,41 +2,40 @@ const CategoryRepository = require('../repositories/CategoryRepository')
 const Category = require('../models/category')
 const VerifyMandatoryParams = require('../shared/utils/VerifyMandatoryParams')
 class CategoryController {
-  async create (request, response) {
-    const categoryRepository = new CategoryRepository(Category)
+  constructor (repository) {
+    this.repository = repository
+  }
+
+  create = async (request, response)=> {
     VerifyMandatoryParams(['name'], request.body)
     const { name } = request.body
-    const createdCategory = await categoryRepository.create({ name })
+    const createdCategory = await this.repository.create({ name })
     return response.status(201).json({ statusCode: 201, data: createdCategory })
   }
 
-  async list (request, response) {
-    const categoryRepository = new CategoryRepository(Category)
-    const allCategoriesObj = await categoryRepository.getAll()
+  list = async (request, response) => {
+    const allCategoriesObj =  await this.repository.getAll()
     return response.status(200).json({ statusCode: 200, data: allCategoriesObj })
   }
 
-  async delete (request, response) {
-    const categoryRepository = new CategoryRepository(Category)
+  delete = async (request, response)=> {
     const id = request.params.id
-    await categoryRepository.delete(id)
+    await this.repository.delete(id)
     return response.status(200).json({ statusCode: 200 })
   }
 
-  async update (request, response) {
-    const categoryRepository = new CategoryRepository(Category)
+  update = async (request, response) =>{
     const category = {
       ...request.body,
       id: request.params.id
     }
-    const updatedCategory = await categoryRepository.update(category)
+    const updatedCategory = await this.repository.update(category)
     return response.status(200).json({ statusCode: 200, data: updatedCategory })
   }
 
-  async findOne (request, response) {
-    const categoryRepository = new CategoryRepository(Category)
+  findOne = async (request, response)=> {
     const id = request.params.id
-    const categoryObj = await categoryRepository.getById(id)
+    const categoryObj = await this.repository.getById(id)
     return response.status(200).json({ statusCode: 200, data: categoryObj })
   }
 }
