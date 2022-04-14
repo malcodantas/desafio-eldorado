@@ -1,8 +1,7 @@
-const DeviceModel = require('../models/device')
 const Category = require('../models/category')
 class DeviceRepository {
-  constructor () {
-    this.model = DeviceModel
+  constructor (deviceModel) {
+    this.model = deviceModel
   }
 
   async getAll () {

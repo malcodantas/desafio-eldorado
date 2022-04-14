@@ -1,5 +1,6 @@
 const DeviceRepository = require('../repositories/DeviceRepository')
 const VerifyMandatoryParams = require('../shared/utils/VerifyMandatoryParams')
+const DeviceModel = require('../models/device')
 
 class DeviceController {
   async create (request, response) {
@@ -7,26 +8,26 @@ class DeviceController {
     VerifyMandatoryParams(requiredFields, request.body)
 
     const { categoryId, color, partNumber } = request.body
-    const deviceRepository = new DeviceRepository()
+    const deviceRepository = new DeviceRepository(DeviceModel)
     const createdDevice = await deviceRepository.create({ categoryId, color, partNumber })
     return response.status(201).json({ statusCode: 201, data: createdDevice })
   }
 
   async list (request, response) {
-    const deviceRepository = new DeviceRepository()
+    const deviceRepository = new DeviceRepository(DeviceModel)
     const allDevicesObj = await deviceRepository.getAll()
     return response.status(200).json({ statusCode: 200, data: allDevicesObj })
   }
 
   async delete (request, response) {
-    const deviceRepository = new DeviceRepository()
+    const deviceRepository = new DeviceRepository(DeviceModel)
     const id = request.params.id
     await deviceRepository.delete(id)
     return response.status(200).json({ statusCode: 200 })
   }
 
   async update (request, response) {
-    const deviceRepository = new DeviceRepository()
+    const deviceRepository = new DeviceRepository(DeviceModel)
     const device = {
       ...request.body,
       id: request.params.id
@@ -36,7 +37,7 @@ class DeviceController {
   }
 
   async findOne (request, response) {
-    const deviceRepository = new DeviceRepository()
+    const deviceRepository = new DeviceRepository(DeviceModel)
     const id = request.params.id
     const deviceObj = await deviceRepository.getById(id)
     return response.status(200).json({ statusCode: 200, data: deviceObj })

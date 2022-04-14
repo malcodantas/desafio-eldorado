@@ -1,8 +1,9 @@
 const CategoryRepository = require('../repositories/CategoryRepository')
+const Category = require('../models/category')
 const VerifyMandatoryParams = require('../shared/utils/VerifyMandatoryParams')
 class CategoryController {
   async create (request, response) {
-    const categoryRepository = new CategoryRepository()
+    const categoryRepository = new CategoryRepository(Category)
     VerifyMandatoryParams(['name'], request.body)
     const { name } = request.body
     const createdCategory = await categoryRepository.create({ name })
@@ -10,20 +11,20 @@ class CategoryController {
   }
 
   async list (request, response) {
-    const categoryRepository = new CategoryRepository()
+    const categoryRepository = new CategoryRepository(Category)
     const allCategoriesObj = await categoryRepository.getAll()
     return response.status(200).json({ statusCode: 200, data: allCategoriesObj })
   }
 
   async delete (request, response) {
-    const categoryRepository = new CategoryRepository()
+    const categoryRepository = new CategoryRepository(Category)
     const id = request.params.id
     await categoryRepository.delete(id)
     return response.status(200).json({ statusCode: 200 })
   }
 
   async update (request, response) {
-    const categoryRepository = new CategoryRepository()
+    const categoryRepository = new CategoryRepository(Category)
     const category = {
       ...request.body,
       id: request.params.id
@@ -33,7 +34,7 @@ class CategoryController {
   }
 
   async findOne (request, response) {
-    const categoryRepository = new CategoryRepository()
+    const categoryRepository = new CategoryRepository(Category)
     const id = request.params.id
     const categoryObj = await categoryRepository.getById(id)
     return response.status(200).json({ statusCode: 200, data: categoryObj })
