@@ -1,4 +1,4 @@
-class DeviceRepository {
+class CategoryRepository {
   constructor (category) {
     this.model = category
   }
@@ -37,4 +37,4 @@ class DeviceRepository {
   }
 }
 
-module.exports = DeviceRepository
+module.exports = CategoryRepository
