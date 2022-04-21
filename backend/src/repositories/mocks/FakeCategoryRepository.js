@@ -1,4 +1,3 @@
-const MockResponse = require('./MockResponse')
 
 class FakeCategoryRepository {
   constructor () {
@@ -15,27 +14,33 @@ class FakeCategoryRepository {
   }
 
   async getById (id) {
-    const category = await this.model.filter((category) => { return category.id === id })
-    console.log(category)
-    return category
+    const category = await this.categories.filter((category) => { return category.id === id })
+    if (category) {
+      return category[0]
+    }
+    return {}
   }
 
   async create (category) {
-    const { name } = category
-    const newCategory = await this.model.create({ name: name })
+    const newCategory = { ...category, id: Math.floor(Math.random() * 1000) + 2 }
+    this.categories.push(newCategory)
     return newCategory
   }
 
   async delete (id) {
-    const deletedCategory = await this.model.destroy({
-      where: { id: id }
-    })
+    const deletedCategory = await this.categories.filter((category) => { return category.id !== id })
     return { deletedCategory, id }
   }
 
   async update (category) {
     const categoryToUpdate = await this.getById(category.id)
-    const updatedCategory = categoryToUpdate.update({ ...category })
+    let updatedCategory = {}
+    this.categories.forEach((categoryItem, index) => {
+      if (categoryItem.id === categoryToUpdate.id) {
+        this.categories[index].name = category.name
+        updatedCategory = this.categories[index]
+      }
+    })
     return updatedCategory
   }
 }
