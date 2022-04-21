@@ -1,7 +1,7 @@
 const express = require('express')
 const { routes } = require('./routes')
 const ErrorHandler = require('./shared/middleware/ErrorHandler')
-const PORT = 3001
+const PORT = 3000
 
 const sequelize = require('./database')
 
