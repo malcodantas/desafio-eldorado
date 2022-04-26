@@ -27,7 +27,10 @@ import { CategoryCrudComponent } from './views/category-crud/category-crud.compo
 import { CategoryReadComponent } from './components/category/category-read/category-read.component';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
-import { MatSortModule } from '@angular/material/sort'
+import { MatSortModule } from '@angular/material/sort';
+import { DeviceCrudComponent } from './views/device-crud/device-crud.component';
+import { DeviceReadComponent } from './components/device/device-read/device-read.component';
+import { DeviceCreateComponent } from './components/device/device-create/device-create.component'
 
 
 @NgModule({
@@ -38,7 +41,10 @@ import { MatSortModule } from '@angular/material/sort'
     NavComponent,
     FooterComponent,
     CategoryCrudComponent,
-    CategoryReadComponent
+    CategoryReadComponent,
+    DeviceCrudComponent,
+    DeviceReadComponent,
+    DeviceCreateComponent
   ],
   imports: [
     BrowserModule,
