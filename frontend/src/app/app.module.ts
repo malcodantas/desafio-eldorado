@@ -23,6 +23,7 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {MatFormFieldModule} from '@angular/material/form-field'
 import {MatInputModule} from '@angular/material/input';
+import {MatSelectModule} from '@angular/material/select'; 
 import { CategoryCrudComponent } from './views/category-crud/category-crud.component';
 import { CategoryReadComponent } from './components/category/category-read/category-read.component';
 import { MatTableModule } from '@angular/material/table';
@@ -62,7 +63,8 @@ import { DeviceCreateComponent } from './components/device/device-create/device-
     MatInputModule,
     MatTableModule,
     MatPaginatorModule,
-    MatSortModule
+    MatSortModule,
+    MatSelectModule
   ],
   providers: [],
   bootstrap: [AppComponent]

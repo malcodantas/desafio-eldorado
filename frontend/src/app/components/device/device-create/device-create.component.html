@@ -1,1 +1,38 @@
-<p>device-create works!</p>
+<mat-card>
+    <mat-card-title>New Device</mat-card-title>
+    <form action="">
+        <mat-form-field>
+            <input matInput placeholder="Name" name="name">
+        </mat-form-field>
+
+        <mat-form-field>
+          <input matInput placeholder="Color" name="color">
+        </mat-form-field>
+
+        <div class="inline">
+          
+          <mat-form-field class="partnumber">
+            <input matInput placeholder="Part Number" name="partNumber" type="number" min="0" max="16" >
+          </mat-form-field>
+  
+          <mat-form-field>
+            <mat-label>Category</mat-label>
+            <mat-select>
+  
+            </mat-select>
+          </mat-form-field>
+
+        </div>
+
+        
+    </form>
+    <button mat-raised-button color="primary"> 
+      Salvar
+    </button>
+    <button mat-raised-button (click)="cancelOperation()"> 
+      Calcelar
+    </button>
+  </mat-card>
+  
+  
+  

@@ -1,0 +1,9 @@
+form{
+    display: flex;
+    flex-direction: column;
+  }
+
+.partnumber{
+  width: 200px;
+  margin-right: 15px;
+}
