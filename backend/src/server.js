@@ -2,6 +2,7 @@ const express = require('express')
 const { routes } = require('./routes')
 const ErrorHandler = require('./shared/middleware/ErrorHandler')
 const AuthHandler = require('./shared/middleware/AuthHandler')
+const cors = require('cors')
 const PORT = 3000
 const { userRoutes } = require('./routes/user.routes')
 
@@ -15,6 +16,7 @@ sequelize.authenticate().then(() => {
 })
 
 const app = express()
+app.use(cors())
 app.use(express.json())
 app.use('/login', userRoutes)
 app.use(AuthHandler)
