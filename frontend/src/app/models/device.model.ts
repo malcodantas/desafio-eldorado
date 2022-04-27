@@ -1,6 +1,7 @@
 export interface Device{
     id?:number,
+    name?:string,
     color:string,
-    partNumber:Number,
-    categoryId:number
+    partNumber:Number | null,
+    categoryId:number | null
 }

@@ -2,17 +2,17 @@
     <mat-card-title>New Device</mat-card-title>
     <form action="">
         <mat-form-field>
-            <input matInput placeholder="Name" name="name">
+            <input matInput placeholder="Name" name="name" [(ngModel)]="device.name">
         </mat-form-field>
 
         <mat-form-field>
-          <input matInput placeholder="Color" name="color">
+          <input matInput placeholder="Color" name="color" [(ngModel)]="device.color">
         </mat-form-field>
 
         <div class="inline">
           
           <mat-form-field class="partnumber">
-            <input matInput placeholder="Part Number" name="partNumber" type="number" min="0" max="16" >
+            <input matInput placeholder="Part Number" name="partNumber" type="number" min="0" max="16" [(ngModel)]="device.partNumber" >
           </mat-form-field>
   
           <mat-form-field>
@@ -26,7 +26,7 @@
 
         
     </form>
-    <button mat-raised-button color="primary"> 
+    <button mat-raised-button (click)="createDevice()" color="primary"> 
       Salvar
     </button>
     <button mat-raised-button (click)="cancelOperation()"> 
