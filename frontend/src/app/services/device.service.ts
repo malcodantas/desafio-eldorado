@@ -1,3 +1,4 @@
+import { Device } from './../models/device.model';
 import { apiResponse } from './../models/apiRespose.model';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
@@ -14,5 +15,8 @@ export class DeviceService {
 
   list():Observable<apiResponse>{
     return this.http.get<apiResponse>(this.baseUrl)
+  }
+  create(device:Device):Observable<Device>{
+    return this.http.post<Device>(this.baseUrl,device)
   }
 }

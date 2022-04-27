@@ -8,7 +8,7 @@ import { CategoryService } from 'src/app/services/category.service';
   styleUrls: ['./category-read.component.css']
 })
 export class CategoryReadComponent implements OnInit {
-  categories:Array<Category> | undefined =[]
+  categories:any//Array<Category> | undefined =[]
   constructor(private modelService:CategoryService) { }
 
   ngOnInit(): void {
