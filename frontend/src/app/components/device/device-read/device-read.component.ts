@@ -8,8 +8,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./device-read.component.css']
 })
 export class DeviceReadComponent implements OnInit {
-  devices:any//Array<Device> | undefined =[]
-
+  devices:any //Array<Device> | undefined =[]
   constructor(private modelService:DeviceService) { }
 
   ngOnInit(): void {

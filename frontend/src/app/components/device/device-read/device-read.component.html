@@ -1,3 +1,29 @@
-<ul>
-    <li *ngFor="let device of devices">{{device.id}}{{device.name}}</li>
-</ul>
+<mat-table [dataSource]="devices">
+    <!-- User name Definition -->
+    <ng-container matColumnDef="name">
+      <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
+      <mat-cell *matCellDef="let row"> {{row.name}} </mat-cell>
+    </ng-container>
+  
+    <!-- Age Definition -->
+    <ng-container matColumnDef="color">
+      <mat-header-cell *matHeaderCellDef> Color </mat-header-cell>
+      <mat-cell *matCellDef="let row"> {{row.color}} </mat-cell>
+    </ng-container>
+  
+    <!-- Title Definition -->
+    <ng-container matColumnDef="partNumber">
+      <mat-header-cell *matHeaderCellDef> Part Number </mat-header-cell>
+      <mat-cell *matCellDef="let row"> {{row.partNumber}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="category">
+        <mat-header-cell *matHeaderCellDef> Category </mat-header-cell>
+        <mat-cell *matCellDef="let row"> {{row.partNumber}} </mat-cell>
+      </ng-container>
+  
+    <!-- Header and Row Declarations -->
+    <mat-header-row *matHeaderRowDef="['name', 'color', 'partNumber','category']"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: ['name', 'color', 'partNumber','category']"></mat-row>
+  </mat-table>
+  
