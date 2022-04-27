@@ -31,7 +31,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { DeviceCrudComponent } from './views/device-crud/device-crud.component';
 import { DeviceReadComponent } from './components/device/device-read/device-read.component';
-import { DeviceCreateComponent } from './components/device/device-create/device-create.component'
+import { DeviceCreateComponent } from './components/device/device-create/device-create.component';
 
 
 @NgModule({
