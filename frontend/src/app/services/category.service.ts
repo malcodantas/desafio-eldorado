@@ -11,7 +11,8 @@ import { HttpClient } from '@angular/common/http';
 })
 export class CategoryService {
   baseUrl='http://localhost:3000/category'
-  constructor(private snackBar:MatSnackBar,private http:HttpClient) { }
+  constructor(private snackBar:MatSnackBar,private http:HttpClient
+    ) { }
   
   list():Observable<apiResponse>{
     return this.http.get<apiResponse>(this.baseUrl)
@@ -19,5 +20,16 @@ export class CategoryService {
   
   create(category:Category):Observable<Category>{
     return this.http.post<Category>(this.baseUrl,category)
+  }
+
+  delete(endpoint:string):Observable<any>{
+    return this.http.delete(endpoint)
+  }
+  showMessage(msg:string,time:number=3000):void{
+    this.snackBar.open(msg,'X',{
+      duration:time,
+      horizontalPosition:"right",
+      verticalPosition:"top"
+    })
   }
 }

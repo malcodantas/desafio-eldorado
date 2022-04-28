@@ -22,9 +22,9 @@ export class AuthService {
   login(user:User):Observable<auth>{
     return this.http.post(this.baseUrl,user)
   }
-  showMessage(msg:string):void{
+  showMessage(msg:string,time:number=3000):void{
     this.snackBar.open(msg,'X',{
-      duration:3000,
+      duration:time,
       horizontalPosition:"right",
       verticalPosition:"top"
     })

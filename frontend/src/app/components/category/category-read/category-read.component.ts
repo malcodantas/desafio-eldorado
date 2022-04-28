@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Category } from './../../../models/category.model';
 import { Component, OnInit } from '@angular/core';
 import { CategoryService } from 'src/app/services/category.service';
@@ -9,7 +10,7 @@ import { CategoryService } from 'src/app/services/category.service';
 })
 export class CategoryReadComponent implements OnInit {
   categories:any//Array<Category> | undefined =[]
-  constructor(private modelService:CategoryService) { }
+  constructor(private modelService:CategoryService,private router:Router) { }
 
   ngOnInit(): void {
     this.modelService.list().subscribe(response=>{
@@ -22,4 +23,20 @@ export class CategoryReadComponent implements OnInit {
     })
   }
 
+  deleteCategory(endpoint:string,id:number){
+    this.modelService.delete(endpoint).subscribe(
+      (response) =>{
+        if(response.statusCode==204 || response.statusCode==200){
+          this.modelService.showMessage('Category excluded.',2500)
+          this.categories=this.categories.filter((category: { id: number; })=>{
+            return category.id!==id
+          })
+        }
+      },
+      (error)=>{
+          this.modelService.showMessage('Cannot exclude this categoy. Theres some devices in it.',4500)
+      }
+      ,
+    )
+  }
 }
