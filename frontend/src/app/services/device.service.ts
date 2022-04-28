@@ -9,7 +9,7 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class DeviceService {
-  baseUrl='http://localhost:3000/devices'
+  baseUrl='http://localhost:3000/device'
 
   constructor(private snackBar:MatSnackBar,private http:HttpClient) { }
 
