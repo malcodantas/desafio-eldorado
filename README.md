@@ -1,27 +1,80 @@
-# Frontend
+<p align="center">
+  <a href="" rel="noopener">
+ <img width=200px height=200px src="https://scontent.fnat1-1.fna.fbcdn.net/v/t39.30808-6/273160434_4754489137919908_9153673695573801515_n.jpg?_nc_cat=101&ccb=1-5&_nc_sid=09cbfe&_nc_ohc=OZI28MbDya0AX-8hdlv&_nc_ht=scontent.fnat1-1.fna&oh=00_AT-IH0E6nDOnpcedw8TboCtH-Ar9NgeSp7r2-NBCT1-7ow&oe=62509A4F" alt="Desafio eldorado"></a>
+</p>
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.3.3.
+<h3 align="center">desafio-eldorado</h3>
 
-## Development server
+<div align="center">
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+[![Status](https://img.shields.io/badge/status-active-success.svg)]()
+[![GitHub Issues](https://img.shields.io/github/issues/malcodantas/desafio-eldorado)](https://github.com/malcodantas/desafio-eldorado/issues)
+[![GitHub Pull Requests](https://img.shields.io/github/issues-pr/kylelobo/The-Documentation-Compendium.svg)](https://github.com/malcodantas/desafio-eldorado/pulls)
+[![License](https://img.shields.io/badge/license-MIT-blue.svg)](/LICENSE)
 
-## Code scaffolding
+</div>
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+---
 
-## Build
+<p align="center"> Few lines describing your project.
+    <br> 
+</p>
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+## 📝 Table of Contents
 
-## Running unit tests
+- [Sobre](#about)
+- [Rodando Projeto](#running)
+- [Exemplos](#examples)
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
 
-## Running end-to-end tests
+## 🧐 Sobre <a name = "about"></a>
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+## 🏁 Rodando projeto <a name = "running"></a>
+Renomeie o arquivo .env.sample para .env e substitua as variáveis de ambiente dentro do aquivo com as credenciais do banco de dados.
 
-## Further help
+```
+cp .env.sample .env
+```
+### Instalando dependencias
+Na pasta raiz do projeto, rode:
+```
+npm install
+```
+### Criação do banco de dados e rodando migrations
+```
+npm run orm db:create
+npm run orm db:migrate
+```
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+### Rodando API
+
+```
+npm run dev
+```
+## Exemplos de uso <a name = "examples"></a>
+A API segue o modelo REST, utilizando um endpoint para cada entidade do sistema.
+
+
+## /device
+Para cadastros e consulta de dispositivos, no caso de cadastro(POST); ao menos 3 campos são obrigatórios *categoryId, color e partNumber*
+exemplo:
+```
+{
+	"categoryId":"2",
+	"color":"orange",
+	"partNumber":"10"
+}
+```
+É importante lembrar que a categoria já deve existir antes do cadastro do dispositivo.
+
+## /category
+Para cadastro(POST) das categorias, esse end-point exige apenas um parâmetro *name*
+exemplo:
+```
+{
+	"name":"SmartPhone"
+}
+```
+ ### Procurando por registro especifico
+  Caso procure por um determinado *device* ou *category*, passe seu *id* como parâmetro dentro da url, exemplo:
+/device/3 ou /category/2 
