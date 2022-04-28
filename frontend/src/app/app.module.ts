@@ -13,6 +13,8 @@ import { FooterComponent } from './components/template/footer/footer.component';
 import {FormsModule} from '@angular/forms'
 import {HttpClientModule} from '@angular/common/http';
 
+import { JwtModule } from "@auth0/angular-jwt";
+
 
 // Material Imports
 import {MatToolbarModule} from '@angular/material/toolbar';
@@ -32,7 +34,12 @@ import { MatSortModule } from '@angular/material/sort';
 import { DeviceCrudComponent } from './views/device-crud/device-crud.component';
 import { DeviceReadComponent } from './components/device/device-read/device-read.component';
 import { DeviceCreateComponent } from './components/device/device-create/device-create.component';
+import { LoginComponent } from './views/login/login.component';
+import { HomeComponent } from './components/home/home.component';
 
+export function tokenGetter() {
+  return localStorage.getItem('token');
+}
 
 @NgModule({
   declarations: [
@@ -45,7 +52,9 @@ import { DeviceCreateComponent } from './components/device/device-create/device-
     CategoryReadComponent,
     DeviceCrudComponent,
     DeviceReadComponent,
-    DeviceCreateComponent
+    DeviceCreateComponent,
+    LoginComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
@@ -64,7 +73,13 @@ import { DeviceCreateComponent } from './components/device/device-create/device-
     MatTableModule,
     MatPaginatorModule,
     MatSortModule,
-    MatSelectModule
+    MatSelectModule,
+    JwtModule.forRoot({
+      config: {
+        tokenGetter: tokenGetter,
+        allowedDomains: ['localhost:3000'],
+      }
+    }),
   ],
   providers: [],
   bootstrap: [AppComponent]

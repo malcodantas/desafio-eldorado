@@ -1,3 +1,4 @@
+import { HomeComponent } from './components/home/home.component';
 import { DeviceCreateComponent } from './components/device/device-create/device-create.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
@@ -6,7 +7,17 @@ import { CategoryCrudComponent } from './views/category-crud/category-crud.compo
 import { AuthGuard } from './guards/auth.guard';
 import { DeviceCrudComponent } from './views/device-crud/device-crud.component';
 import { LoginComponent } from './views/login/login.component';
+
+
 const routes: Routes = [
+  {
+    path:'login',
+    component:LoginComponent
+  },
+  {
+    path:'home',
+    component:HomeComponent,
+  },
   {
     path:'category',
     component: CategoryCrudComponent
@@ -25,10 +36,7 @@ const routes: Routes = [
     path:'device/create',
     component:DeviceCreateComponent
   },
-  {
-    path:'login',
-    component:LoginComponent
-  }
+
 ];
 
 @NgModule({
