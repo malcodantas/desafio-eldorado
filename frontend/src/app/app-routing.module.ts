@@ -5,6 +5,7 @@ import { CategoryCreateComponent } from './components/category/category-create/c
 import { CategoryCrudComponent } from './views/category-crud/category-crud.component';
 import { AuthGuard } from './guards/auth.guard';
 import { DeviceCrudComponent } from './views/device-crud/device-crud.component';
+import { LoginComponent } from './views/login/login.component';
 const routes: Routes = [
   {
     path:'category',
@@ -23,6 +24,10 @@ const routes: Routes = [
   {
     path:'device/create',
     component:DeviceCreateComponent
+  },
+  {
+    path:'login',
+    component:LoginComponent
   }
 ];
 
