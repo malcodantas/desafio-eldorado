@@ -1,17 +1,14 @@
 <mat-table [dataSource]="devices">
-    <!-- User name Definition -->
     <ng-container matColumnDef="name">
       <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
       <mat-cell *matCellDef="let row"> {{row.name}} </mat-cell>
     </ng-container>
   
-    <!-- Age Definition -->
     <ng-container matColumnDef="color">
       <mat-header-cell *matHeaderCellDef> Color </mat-header-cell>
       <mat-cell *matCellDef="let row"> {{row.color}} </mat-cell>
     </ng-container>
   
-    <!-- Title Definition -->
     <ng-container matColumnDef="partNumber">
       <mat-header-cell *matHeaderCellDef> Part Number </mat-header-cell>
       <mat-cell *matCellDef="let row"> {{row.partNumber}} </mat-cell>
@@ -22,8 +19,22 @@
         <mat-cell *matCellDef="let row"> {{row.category.name}} </mat-cell>
       </ng-container>
   
-    <!-- Header and Row Declarations -->
-    <mat-header-row *matHeaderRowDef="['name', 'color', 'partNumber','category']"></mat-header-row>
-    <mat-row *matRowDef="let row; columns: ['name', 'color', 'partNumber','category']"></mat-row>
+      <ng-container matColumnDef="options">
+        <mat-header-cell *matHeaderCellDef> Opções </mat-header-cell>
+        <mat-cell *matCellDef="let row"> 
+          <button (click)="deleteDevice(row.links.endpoint,row.id)"> 
+            <i class="material-icons red">
+                delete
+            </i> 
+          </button>
+          <button > 
+            <i class="material-icons orange">
+                edit
+            </i> 
+          </button>
+        </mat-cell>
+      </ng-container>
+    <mat-header-row *matHeaderRowDef="['name', 'color', 'partNumber','category','options']"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: ['name', 'color', 'partNumber','category','options']"></mat-row>
   </mat-table>
   

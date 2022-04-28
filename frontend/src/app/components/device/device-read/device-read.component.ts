@@ -21,6 +21,19 @@ export class DeviceReadComponent implements OnInit {
       }
     })
   }
-
-  
-}
+  deleteDevice(endpoint:string,id:number){
+    this.modelService.delete(endpoint).subscribe(
+      (response) =>{
+        if(response.statusCode==204 || response.statusCode==200){
+          this.modelService.showMessage('Device excluded.',2500)
+          this.devices=this.devices.filter((device: { id: number; })=>{
+            return device.id!==id
+          })
+        }
+      },
+      (error)=>{
+          this.modelService.showMessage('Cannot exclude this device.',4500)
+      } 
+    )
+    }
+  }

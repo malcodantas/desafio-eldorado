@@ -19,4 +19,14 @@ export class DeviceService {
   create(device:Device):Observable<Device>{
     return this.http.post<Device>(this.baseUrl,device)
   }
+  delete(endpoint:string):Observable<any>{
+    return this.http.delete(endpoint)
+  }
+  showMessage(msg:string,time:number=3000):void{
+    this.snackBar.open(msg,'X',{
+      duration:time,
+      horizontalPosition:"right",
+      verticalPosition:"top"
+    })
+  }
 }
