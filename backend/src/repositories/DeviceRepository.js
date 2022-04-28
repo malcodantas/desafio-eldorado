@@ -1,5 +1,7 @@
+// require('dotenv').config()
 const Category = require('../models/category')
 class DeviceRepository {
+  base_url=process.env.BASE_URL
   constructor (deviceModel) {
     this.model = deviceModel
   }
@@ -8,6 +10,9 @@ class DeviceRepository {
     const allDevices = await this.model.findAll({ include: Category })
     const allDevicesObj = []
     allDevices.forEach(device => {
+      device.dataValues.links = {
+        endpoint: `${this.base_url}/device/${device.dataValues.id}`
+      }
       allDevicesObj.push(device.dataValues)
     })
     return allDevicesObj
@@ -15,6 +20,9 @@ class DeviceRepository {
 
   async getById (id) {
     const device = await this.model.findByPk(id, { include: Category })
+    device.dataValues.links = {
+      endpoint: `${this.base_url}/device/${device.dataValues.id}`
+    }
     return device
   }
 

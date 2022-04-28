@@ -1,4 +1,7 @@
+require('dotenv').config()
+
 class CategoryRepository {
+  base_url=process.env.BASE_URL
   constructor (category) {
     this.model = category
   }
@@ -7,6 +10,9 @@ class CategoryRepository {
     const all = await this.model.findAll()
     const allObj = []
     all.forEach(category => {
+      category.dataValues.links = {
+        endpoint: `${this.base_url}/category/${category.dataValues.id}`
+      }
       allObj.push(category.dataValues)
     })
     return allObj
@@ -14,6 +20,9 @@ class CategoryRepository {
 
   async getById (id) {
     const category = await this.model.findByPk(id)
+    category.dataValues.links = {
+      endpoint: `${this.base_url}/category/${category.dataValues.id}`
+    }
     return category
   }
 
