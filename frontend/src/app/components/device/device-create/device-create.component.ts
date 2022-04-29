@@ -46,4 +46,7 @@ export class DeviceCreateComponent implements OnInit {
       this.route.navigate(['/device'])
     })
   }
+  changeCategory(value:number) {
+    this.device.categoryId=value
+  }
 }

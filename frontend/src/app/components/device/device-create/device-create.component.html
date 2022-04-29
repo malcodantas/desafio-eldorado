@@ -17,8 +17,8 @@
   
           <mat-form-field>
             <mat-label>Category</mat-label>
-            <mat-select>
-              <mat-option *ngFor="let category of avaliableCategories" [value]="category.id">{{category.name}}</mat-option>
+            <mat-select (selectionChange)="changeCategory($event.value)">
+              <mat-option *ngFor="let category of avaliableCategories" [value]="category.id" name="categoryId" >{{category.name}}</mat-option>
             </mat-select>
           </mat-form-field>
 
