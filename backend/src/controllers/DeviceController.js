@@ -9,8 +9,8 @@ class DeviceController {
     const requiredFields = ['categoryId', 'color', 'partNumber']
     VerifyMandatoryParams(requiredFields, request.body)
 
-    const { categoryId, color, partNumber } = request.body
-    const createdDevice = await this.repository.create({ categoryId, color, partNumber })
+    const { categoryId, color, partNumber, name } = request.body
+    const createdDevice = await this.repository.create({ categoryId, color, partNumber,name })
     return response.status(201).json({ statusCode: 201, data: createdDevice })
   }
 

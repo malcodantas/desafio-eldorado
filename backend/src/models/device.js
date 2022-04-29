@@ -3,6 +3,10 @@ const database = require('../database')
 const Category = require('./category')
 
 const Device = database.define('device', {
+  name: {
+    type: Sequelize.STRING,
+    allowNull: true
+  },
   id: {
     type: Sequelize.INTEGER,
     allowNull: false,

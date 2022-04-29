@@ -27,8 +27,8 @@ class DeviceRepository {
   }
 
   async create (device) {
-    const { categoryId, color, partNumber } = device
-    const newDevice = await this.model.create({ categoryId: categoryId, color: color, partNumber: partNumber })
+    const { categoryId, color, partNumber,name } = device
+    const newDevice = await this.model.create({ categoryId: categoryId, color: color, partNumber: partNumber,name: name })
     return newDevice
   }
 
