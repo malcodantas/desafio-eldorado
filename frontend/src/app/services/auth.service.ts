@@ -1,3 +1,4 @@
+import { environment } from './../../environments/environment.prod';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
@@ -11,7 +12,8 @@ import { auth } from '../models/auth.model';
   providedIn: 'root'
 })
 export class AuthService {
-  baseUrl='http://localhost:3000/login'
+
+  baseUrl=`http://${environment.API_DOMAIN}/login`
 
   constructor(
     private router:Router,

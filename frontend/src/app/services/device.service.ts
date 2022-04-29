@@ -1,3 +1,4 @@
+import { environment } from './../../environments/environment.prod';
 import { Device } from './../models/device.model';
 import { apiResponse } from './../models/apiRespose.model';
 import { Observable } from 'rxjs';
@@ -9,7 +10,7 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class DeviceService {
-  baseUrl='http://localhost:3000/device'
+  baseUrl=`http://${environment.API_DOMAIN}/device`
 
   constructor(private snackBar:MatSnackBar,private http:HttpClient) { }
 

@@ -1,3 +1,4 @@
+import { environment } from './../../environments/environment.prod';
 import { Category } from './../models/category.model';
 import { apiResponse } from './../models/apiRespose.model';
 import { Observable } from 'rxjs';
@@ -10,7 +11,8 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class CategoryService {
-  baseUrl='http://localhost:3000/category'
+  baseUrl=`http://${environment.API_DOMAIN}/category`
+
   constructor(private snackBar:MatSnackBar,private http:HttpClient
     ) { }
   

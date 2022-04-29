@@ -1,3 +1,4 @@
+import { environment } from './../environments/environment.prod';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
@@ -77,7 +78,7 @@ export function tokenGetter() {
     JwtModule.forRoot({
       config: {
         tokenGetter: tokenGetter,
-        allowedDomains: ['localhost:3000'],
+        allowedDomains: [`${environment.API_DOMAIN}`],
       }
     }),
   ],
