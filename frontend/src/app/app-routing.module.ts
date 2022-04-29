@@ -11,12 +11,12 @@ import { LoginComponent } from './views/login/login.component';
 
 const routes: Routes = [
   {
-    path:'login',
+    path:'',
     component:LoginComponent
   },
   {
     path:'home',
-    component:HomeComponent,
+    redirectTo:'/device',
   },
   {
     path:'category',
@@ -36,6 +36,10 @@ const routes: Routes = [
     path:'device/create',
     component:DeviceCreateComponent
   },
+  {
+    path:'**',
+    redirectTo:'/login'
+  }
 
 ];
 
