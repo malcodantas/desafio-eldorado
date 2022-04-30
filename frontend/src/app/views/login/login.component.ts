@@ -20,7 +20,7 @@ export class LoginComponent implements OnInit {
       (response)=>{
         if(response.token){
           localStorage.setItem('token', response.token);
-          this.router.navigate(['/home'])
+          this.router.navigate(['/device'])
         }
       },
       (error)=>{
