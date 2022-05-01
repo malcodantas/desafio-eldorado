@@ -1,6 +1,6 @@
 {
     "/api": {
-    "target": "http://127.0.0.1:3000",
+    "target": "ec2-54-196-177-83.compute-1.amazonaws.com:3000",
     "secure": false
     }
 }
