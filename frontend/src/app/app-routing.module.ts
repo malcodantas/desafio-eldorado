@@ -1,3 +1,4 @@
+import { DeviceEditComponent } from './components/device/device-edit/device-edit.component';
 import { CategoryEditComponent } from './components/category/category-edit/category-edit.component';
 import { DeviceCreateComponent } from './components/device/device-create/device-create.component';
 import { NgModule, Component } from '@angular/core';
@@ -25,11 +26,11 @@ const routes: Routes = [
   },
   {
     path:'device',
-    component:DeviceCrudComponent
-  },
-  {
-    path:'device/create',
-    component:DeviceCreateComponent
+    children:[
+      {path:'',component:DeviceCrudComponent},
+      {path:'create',component:DeviceCreateComponent},
+      {path:':id/edit',component:DeviceEditComponent}
+    ]
   },
   {
     path:'**',

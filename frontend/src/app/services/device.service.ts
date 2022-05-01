@@ -23,6 +23,13 @@ export class DeviceService {
   delete(endpoint:string):Observable<any>{
     return this.http.delete(endpoint)
   }
+  update(endpoint:string,device:Device):Observable<any>{
+    return this.http.put(endpoint,device)
+  }
+
+  getOne(endpont:string):Observable<any>{
+    return this.http.get(endpont)
+  }
   showMessage(msg:string,time:number=3000):void{
     this.snackBar.open(msg,'X',{
       duration:time,

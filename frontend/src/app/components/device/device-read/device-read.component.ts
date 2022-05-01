@@ -1,5 +1,5 @@
+import { Router } from '@angular/router';
 import { DeviceService } from './../../../services/device.service';
-import { Device } from './../../../models/device.model';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -9,7 +9,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DeviceReadComponent implements OnInit {
   devices:any //Array<Device> | undefined =[]
-  constructor(private modelService:DeviceService) { }
+  constructor(private modelService:DeviceService,private router:Router) { }
 
   ngOnInit(): void {
     this.modelService.list().subscribe(response=>{
@@ -35,5 +35,9 @@ export class DeviceReadComponent implements OnInit {
           this.modelService.showMessage('Cannot exclude this device.',4500)
       } 
     )
-    }
   }
+
+  updateDevice(id:number){
+    this.router.navigate(['device',`${id}`,'edit'])
+  }
+}

@@ -1,0 +1,40 @@
+<app-header></app-header>
+<app-nav></app-nav>
+    <div class="main">
+      <mat-card>
+        <mat-card-title>Edit Device</mat-card-title>
+        <form action="">
+            <mat-form-field>
+                <input matInput placeholder="Name" name="name" [(ngModel)]="device.name">
+            </mat-form-field>
+    
+            <mat-form-field>
+              <input matInput placeholder="Color" name="color" [(ngModel)]="device.color">
+            </mat-form-field>
+    
+            <div class="inline">
+              
+              <mat-form-field class="partnumber">
+                <input matInput placeholder="Part Number" name="partNumber" type="number" min="0" max="16" [(ngModel)]="device.partNumber" >
+              </mat-form-field>
+      
+              <mat-form-field>
+                <mat-label>Category</mat-label>
+                <mat-select (selectionChange)="changeCategory($event.value)" [value]="device.categoryId">
+                  <mat-option *ngFor="let category of avaliableCategories" [value]="category.id" name="categoryId" >{{category.name}}</mat-option>
+                </mat-select>
+              </mat-form-field>
+    
+            </div>
+    
+            
+        </form>
+        <button mat-raised-button (click)="updateDevice()" color="primary"> 
+          Salvar
+        </button>
+        <button mat-raised-button (click)="cancelOperation()"> 
+          Calcelar
+        </button>
+      </mat-card>    
+    </div>
+<app-footer></app-footer>
