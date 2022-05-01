@@ -1,0 +1,24 @@
+<app-header></app-header>
+<app-nav></app-nav>
+  <div class="main">
+    <mat-card>
+      <mat-card-title>Edit Category
+      </mat-card-title>
+      <form action="">
+          <mat-form-field>
+              <input matInput placeholder="Nome" name="name" [(ngModel)]="category.name">
+          </mat-form-field>
+      </form>
+      <button mat-raised-button (click)="updateCategory(category)" color="primary"> 
+        Salvar
+      </button>
+      <button mat-raised-button (click)="cancelOperation()"> 
+        Calcelar
+      </button>
+    </mat-card>
+  </div>
+<app-footer></app-footer>
+
+
+
+

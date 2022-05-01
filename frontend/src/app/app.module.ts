@@ -36,6 +36,7 @@ import { DeviceCrudComponent } from './views/device-crud/device-crud.component';
 import { DeviceReadComponent } from './components/device/device-read/device-read.component';
 import { DeviceCreateComponent } from './components/device/device-create/device-create.component';
 import { LoginComponent } from './views/login/login.component';
+import { CategoryEditComponent } from './components/category/category-edit/category-edit.component';
 
 export function tokenGetter() {
   return localStorage.getItem('token');
@@ -54,6 +55,7 @@ export function tokenGetter() {
     DeviceReadComponent,
     DeviceCreateComponent,
     LoginComponent,
+    CategoryEditComponent,
   ],
   imports: [
     BrowserModule,

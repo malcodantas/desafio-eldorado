@@ -1,3 +1,4 @@
+import { CategoryEditComponent } from './components/category/category-edit/category-edit.component';
 import { DeviceCreateComponent } from './components/device/device-create/device-create.component';
 import { NgModule, Component } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
@@ -15,13 +16,12 @@ const routes: Routes = [
   },
   {
     path:'category',
-    component: CategoryCrudComponent
-    // canActivate:[AuthGuard]
-  },
-  {
-    path:'category/create',
-    component:CategoryCreateComponent
-    // canActivate:[AuthGuard]
+    children:[
+      {path:'',component:CategoryCrudComponent},
+      {path:'create',component:CategoryCreateComponent},
+      {path:':id/edit',component:CategoryEditComponent}
+    ]
+
   },
   {
     path:'device',

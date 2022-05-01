@@ -39,4 +39,7 @@ export class CategoryReadComponent implements OnInit {
       ,
     )
   }
+  updateCategory(id:number){
+    this.router.navigate(['category',`${id}`,'edit'])
+  }
 }
