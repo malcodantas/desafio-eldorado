@@ -7,3 +7,8 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     margin-left: 210px;
     margin-top:25px;
 }
+.option-btn{
+    padding:5px;
+    border-radius: 50%;
+    margin-right: 5px;
+}

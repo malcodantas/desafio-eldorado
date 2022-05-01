@@ -22,12 +22,12 @@
       <ng-container matColumnDef="options">
         <mat-header-cell *matHeaderCellDef> Opções </mat-header-cell>
         <mat-cell *matCellDef="let row"> 
-          <button (click)="deleteDevice(row.links.endpoint,row.id)"> 
+          <button (click)="deleteDevice(row.links.endpoint,row.id)" class="option-btn"> 
             <i class="material-icons red">
                 delete
             </i> 
           </button>
-          <button (click)="updateDevice(row.id)"> 
+          <button (click)="updateDevice(row.id)" class="option-btn"> 
             <i class="material-icons orange">
                 edit
             </i> 
