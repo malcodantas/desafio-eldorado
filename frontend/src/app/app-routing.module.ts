@@ -17,6 +17,7 @@ const routes: Routes = [
   },
   {
     path:'category',
+    canActivate:[AuthGuard],
     children:[
       {path:'',component:CategoryCrudComponent},
       {path:'create',component:CategoryCreateComponent},
@@ -26,6 +27,7 @@ const routes: Routes = [
   },
   {
     path:'device',
+    canActivate:[AuthGuard],
     children:[
       {path:'',component:DeviceCrudComponent},
       {path:'create',component:DeviceCreateComponent},
