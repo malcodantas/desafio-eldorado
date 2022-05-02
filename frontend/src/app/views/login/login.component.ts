@@ -10,7 +10,7 @@ import { AuthService } from 'src/app/services/auth.service';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  user:User={username:'malco',password:'123456'}
+  user:User={username:'',password:''}
   constructor(private router:Router, private authService:AuthService) { }
   ngOnInit(): void {
   }

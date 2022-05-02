@@ -54,9 +54,8 @@ export class DeviceEditComponent implements OnInit {
     this.route.navigate(['/device'])
   }
 
-  updateDevice(){
-    this.modelService.create(this.device).subscribe((response)=>{
-      //TODO: Verify statuscode and do respective flow
+  updateDevice(device:Device){
+    this.modelService.update(this.device.links.endpoint,this.device).subscribe((response)=>{
       console.log('device created:',response)
       this.route.navigate(['/device'])
     })
